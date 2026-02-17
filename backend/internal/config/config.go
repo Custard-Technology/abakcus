@@ -25,8 +25,6 @@ type MongoConfig struct {
 	Database string
 }
 
-// LoadMongoConfig reads MongoDB-related configuration from environment
-// variables and returns a validated MongoConfig.
 func LoadMongoConfig() (MongoConfig, error) {
 	uri := os.Getenv("MONGO_URI")
 	if uri == "" {
