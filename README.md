@@ -1,82 +1,25 @@
-# Custard App
+## Abakcus: Small Business Tools
 
-![Custard App](https://raw.githubusercontent.com/Custard-Technology/custard-app/refs/heads/main/frontend/public/hom2.png)
+### Development
 
-Custard is a decentralized Loyalty Points Program application that allows businesses to create their own branded loyalty tokens on the blockchain. It provides a seamless interface for businesses to manage rewards and for customers to view and redeem their loyalty points.
-
-## 🎥 Demo
-[Watch the Demo on YouTube](https://www.youtube.com/watch?v=D7PIh4vfVeA)
-
-## 🏗 Project Structure
-
-The project is divided into two main parts:
-
-- **`/contract`**: Contains the Solidity smart contracts, deployment scripts, and Hardhat configuration.
-- **`/frontend`**: The Next.js web application for the user interface.
+The backend lives in the `backend` directory and is a Go module.
+To run the API locally you need a MongoDB instance and the following
+environment variables (see `backend/.env` for an example):
 
 ```
-custard-app/
-├── contract/               # Smart Contracts (Hardhat)
-│   ├── contracts/          # Solidity source files
-│   ├── scripts/            # Deployment scripts
-│   └── hardhat.config.js   # Hardhat configuration
-├── frontend/               # Web Application (Next.js)
-│   ├── app/                # Next.js App Router pages
-│   ├── components/         # Reusable UI components
-│   ├── lib/                # Utilities (Auth, DB, etc.)
-│   ├── store/              # State management (Zustand)
-│   └── public/             # Static assets
-└── README.md
+MONGO_URI=mongodb://localhost:27017
+MONGO_DB=abakcus
 ```
 
-## 🛠 Tech Stack
+Start the service with:s
 
-### Contracts
-- **Solidity**: Smart contract language.
-- **Hardhat**: Development environment.
-- **OpenZeppelin**: Standard contract libraries (ERC20).
-
-### Frontend
-- **Next.js 16**: React framework with App Router.
-- **React 19**: UI library.
-- **Tailwind CSS**: Styling framework.
-- **MongoDB**: Database for user and business data.
-- **Ethers.js**: Blockchain interaction.
-- **Zustand**: State management.
-- **Resend**: Email services.
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v18+ recommended)
-- npm or yarn
-- A MongoDB instance (local or Atlas)
-- An Ethereum-compatible wallet private key (for deployment)
-
-### Environment Setup
-
-Create a `.env` file in the `frontend` root directory with the following variables:
-
-```bash
-# Frontend .env
-MONGODB_URI=your_mongodb_connection_string
-RESEND_API=your_resend_api_key
-FACTORY_CONTRACT_ADDRESS=deployed_factory_contract_address
-RPC_URL=your_rpc_url
-PUBLIC_KEY=your_wallet_public_key
-PRIVATE_KEY=your_wallet_private_key
-ENV=development
-LINK=http://localhost:3000
-DATABASE=custard_db
+```sh
+cd backend
+go run ./cmd/api
 ```
 
-For the contract directory, create a `.env` file in `contract/`:
-
-```bash
-# Contract .env
-PRIVATE_KEY=your_wallet_private_key
-```
+Connection attempts are logged on startup and the process will exit if the
+MongoDB handshake fails.
 
 ### Installation
 
