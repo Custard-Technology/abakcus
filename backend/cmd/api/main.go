@@ -16,8 +16,6 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// cors wraps an http.Handler and injects CORS headers. In development we allow
-// any origin; in production you may restrict this to the frontend domain.
 func cors(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
